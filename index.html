@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Witchball viewer</title>
+  <script type="module" crossorigin src="./assets/viewer-C3kPfKf1.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/career-Dx6_cFs4.js">
+  <link rel="modulepreload" crossorigin href="./assets/CanvasPool-Cbwekkjc.js">
+  <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5uSwcsy.js">
+  <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-ChTAOV-2.js">
+  <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-2lic-O9b.js">
+  <link rel="modulepreload" crossorigin href="./assets/getTexelRangeRects-yRm_-M2y.js">
+  <link rel="stylesheet" crossorigin href="./assets/viewer-Dg37IJCu.css">
+
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="#2c363d" />
+  <link rel="apple-touch-icon" href="./icon-180.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Witchball" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <script>if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));</script>
+</head>
+<body>
+  <header id="bar">
+    <a class="to-hub" href="./hub.html" title="Back to your club">← Club</a>
+    <div class="brand">Witchball</div>
+    <div id="matchup"></div>
+    <div class="tools">
+      <label><span>park</span> <select id="park"></select></label>
+      <form id="load">
+        <input id="seed" size="10" aria-label="seed" />
+        <button type="submit" class="primary">Load</button>
+      </form>
+    </div>
+  </header>
+  <main>
+    <section id="stage">
+      <div id="screen">
+        <div id="canvas"></div>
+        <div id="scorebug">
+          <div class="teams">
+            <div class="team" id="sb-away"><i class="chip"></i><span class="abbr"></span><b class="runs"></b></div>
+            <div class="team" id="sb-home"><i class="chip"></i><span class="abbr"></span><b class="runs"></b></div>
+          </div>
+          <div class="state">
+            <div class="inning"><span id="sb-half">▲</span><span id="sb-inn">1</span></div>
+            <svg id="sb-bases" viewBox="0 0 44 30" aria-label="bases">
+              <rect class="b2" x="16" y="2" width="10" height="10" transform="rotate(45 21 7)" />
+              <rect class="b3" x="5" y="13" width="10" height="10" transform="rotate(45 10 18)" />
+              <rect class="b1" x="27" y="13" width="10" height="10" transform="rotate(45 32 18)" />
+            </svg>
+            <div class="countouts"><span id="sb-count">0-0</span><span id="sb-outs"><i></i><i></i><i></i></span></div>
+          </div>
+        </div>
+        <div id="card"></div>
+        <div id="banner" hidden><div class="big"></div><div class="small"></div></div>
+      </div>
+      <div id="caption">
+        <div id="cap-line"></div>
+      </div>
+      <div id="controls">
+        <button id="prev" title="Previous play (←)">⏮</button>
+        <button id="toggle" title="Pause / play (space)">❚❚</button>
+        <button id="replay" title="Restart this play (r)">↺</button>
+        <button id="areplay" title="Action replay: the play again, slower, following the ball (p)">replay</button>
+        <button id="next" title="Next play (→)">⏭</button>
+        <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="time in the play" />
+        <span id="clock"></span>
+        <select id="speed" title="Speed"></select>
+        <label title="Go on to the next play"><input type="checkbox" id="auto" checked /> auto</label>
+        <label title="Replay big plays (home runs, extra-base hits, double plays, runs), following the ball"><input type="checkbox" id="replays" checked /> replays</label>
+      </div>
+      <div id="jump">
+        <label title="Time between pitches and plays">pace <select id="pace"></select></label>
+        <label title="The action camera frames the play; fixed shows the whole field">camera <select id="cam"><option value="action">action</option><option value="fixed">fixed</option></select></label>
+        <label>dots <select id="labels"><option value="numbers">shirt numbers</option><option value="positions">positions</option></select></label>
+        <label>find <select id="kinds"></select></label>
+        <button id="findnext">next ▸</button>
+      </div>
+    </section>
+    <aside id="side">
+      <section id="now">
+        <h2 id="now-head"></h2>
+        <div id="now-who"></div>
+        <ol id="now-lines"></ol>
+      </section>
+      <section id="pbp-wrap">
+        <h3>Play-by-play</h3>
+        <div id="pbp"></div>
+      </section>
+      <details id="details">
+        <summary>Engine details</summary>
+        <div id="version"></div>
+        <div id="explain"></div>
+      </details>
+    </aside>
+  </main>
+</body>
+</html>
