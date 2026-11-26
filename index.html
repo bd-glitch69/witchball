@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Witchball viewer</title>
-  <script type="module" crossorigin src="./assets/viewer-6O39u1CX.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/career-B-mr088f.js">
+  <title>Witchball viewer</title>
+  <script type="module" crossorigin src="./assets/viewer-Be_5kjbg.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/lines-DBjs3j5N.js">
   <link rel="modulepreload" crossorigin href="./assets/CanvasPool-Cbwekkjc.js">
   <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5uSwcsy.js">
   <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-ChTAOV-2.js">
   <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-2lic-O9b.js">
   <link rel="modulepreload" crossorigin href="./assets/getTexelRangeRects-yRm_-M2y.js">
-  <link rel="stylesheet" crossorigin href="./assets/viewer-Dg37IJCu.css">
+  <link rel="stylesheet" crossorigin href="./assets/viewer--nhA18DW.css">
 
   <link rel="manifest" href="./manifest.webmanifest" />
   <meta name="theme-color" content="#2c363d" />
@@ -55,6 +55,7 @@
           </div>
         </div>
         <div id="card"></div>
+        <div id="tip" hidden></div>
         <div id="banner" hidden><div class="big"></div><div class="small"></div></div>
       </div>
       <div id="caption">
@@ -97,5 +98,10 @@
       </details>
     </aside>
   </main>
+  <div id="who-back" hidden></div>
+  <div id="who" role="dialog" aria-label="Card" hidden>
+    <button id="who-close" title="Close (Esc): back to the same pitch" aria-label="Close">×</button>
+    <div id="who-body"></div>
+  </div>
 </body>
 </html>
