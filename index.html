@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Witchball viewer</title>
-  <script type="module" crossorigin src="./assets/viewer-CoNMZsJ5.js"></script>
+  <script type="module" crossorigin src="./assets/viewer-Ct3xqgQy.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/lines-CVqBQcy3.js">
   <link rel="modulepreload" crossorigin href="./assets/CanvasPool-Cbwekkjc.js">
   <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5uSwcsy.js">
   <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-ChTAOV-2.js">
   <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-2lic-O9b.js">
   <link rel="modulepreload" crossorigin href="./assets/getTexelRangeRects-yRm_-M2y.js">
-  <link rel="stylesheet" crossorigin href="./assets/viewer-Be2Od5_Q.css">
+  <link rel="stylesheet" crossorigin href="./assets/viewer-DRsNtrO5.css">
 
   <link rel="manifest" href="./manifest.webmanifest" />
   <meta name="theme-color" content="#2c363d" />
@@ -61,24 +61,31 @@
       <div id="caption">
         <div id="cap-line"></div>
       </div>
+      <!-- beneath the field. A wide screen shows every control at once; a phone shows one row (play / pause, replay, speed,
+           and the two menus) and opens View or Plays below it: .view and .nav mark what each menu holds, .d and .p the
+           wide-screen and the phone wording of a label (style.css) -->
+      <div id="cbar">
       <div id="controls">
-        <button id="prev" title="Previous play (←)">⏮</button>
-        <button id="toggle" title="Pause / play (space)">❚❚</button>
-        <button id="replay" title="Restart this play (r)">↺</button>
-        <button id="areplay" title="Action replay: the play again, slower, following the ball (p)">replay</button>
-        <button id="next" title="Next play (→)">⏭</button>
-        <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="time in the play" />
-        <span id="clock"></span>
-        <select id="speed" title="Speed"></select>
-        <label title="Go on to the next play"><input type="checkbox" id="auto" checked /> auto</label>
-        <label title="Replay big plays (home runs, extra-base hits, double plays, runs), following the ball"><input type="checkbox" id="replays" checked /> replays</label>
+        <button id="prev" class="nav" title="Previous play (←)">⏮</button>
+        <button id="toggle" title="Pause / play (space)" aria-label="Play / pause">❚❚</button>
+        <button id="replay" class="nav" title="Restart this play (r)">↺</button>
+        <button id="areplay" title="Action replay: the play again, slower, following the ball (p)"><span class="d">replay</span><span class="p">Replay</span></button>
+        <button id="next" class="nav" title="Next play (→)">⏭</button>
+        <input type="range" id="scrub" class="nav" min="0" max="1000" value="0" aria-label="time in the play" />
+        <span id="clock" class="nav"></span>
+        <select id="speed" title="Speed" aria-label="Playback speed"></select>
+        <label id="l-auto" class="view" title="Go on to the next play when this one ends; off, it stops at the end of each play"><input type="checkbox" id="auto" checked /> <span class="d">auto</span><span class="p">Continue to the next play</span></label>
+        <label id="l-replays" class="view" title="Replay big plays (home runs, extra-base hits, double plays, runs), following the ball"><input type="checkbox" id="replays" checked /> <span class="d">replays</span><span class="p">Replay big plays</span></label>
+        <button id="m-view" class="menu-btn" aria-expanded="false" title="Camera, pace, dot labels, and what plays on by itself">View</button>
+        <button id="m-nav" class="menu-btn" aria-expanded="false" aria-label="Replay navigation" title="Previous and next play, the scrubber, the time from contact, and Find play">Plays</button>
       </div>
       <div id="jump">
-        <label title="Time between pitches and plays">pace <select id="pace"></select></label>
-        <label title="The action camera frames the play; fixed shows the whole field">camera <select id="cam"><option value="action">action</option><option value="fixed">fixed</option></select></label>
-        <label>dots <select id="labels"><option value="numbers">shirt numbers</option><option value="positions">positions</option></select></label>
-        <label>find <select id="kinds"></select></label>
-        <button id="findnext">next ▸</button>
+        <label id="l-pace" class="view" title="Time between pitches and plays">pace <select id="pace"></select></label>
+        <label id="l-cam" class="view" title="The action camera frames the play; fixed shows the whole field">camera <select id="cam"><option value="action">action</option><option value="fixed">fixed</option></select></label>
+        <label id="l-dots" class="view">dots <select id="labels"><option value="numbers">shirt numbers</option><option value="positions">positions</option></select></label>
+        <label id="l-find" class="nav">find <select id="kinds"></select></label>
+        <button id="findnext" class="nav">next ▸</button>
+      </div>
       </div>
     </section>
     <aside id="side">
