@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Witchball Phone Benchmark</title>
+<meta name="robots" content="noindex">
+<style>
+  /* One narrow column, read top to bottom: what it does, the button, the two runs side by side, the device. */
+  :root {
+    --bg: #f3f5f2;        /* infield chalk */
+    --panel: #ffffff;
+    --fg: #17201b;
+    --muted: #5b6760;
+    --line: #d5ddd7;
+    --accent: #1f6b45;    /* outfield grass */
+    --accent-fg: #ffffff;
+    --warn: #9a4a12;
+    --display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111613; --panel: #19211c; --fg: #e6ece8; --muted: #9aa8a0; --line: #2c3831;
+      --accent: #5fc28f; --accent-fg: #0b130e; --warn: #f0a46a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111613; --panel: #19211c; --fg: #e6ece8; --muted: #9aa8a0; --line: #2c3831;
+    --accent: #5fc28f; --accent-fg: #0b130e; --warn: #f0a46a; color-scheme: dark;
+  }
+  body {
+    background: var(--bg); color: var(--fg); font: 15px/1.5 var(--body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 24px 40px;
+  }
+  main { max-width: 34rem; margin: 0 auto; display: grid; gap: 20px; }
+  h1 { font: 700 1.6rem/1.15 var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .lede { color: var(--muted); max-width: 60ch; }
+  button#run {
+    font: 600 1.05rem var(--body); color: var(--accent-fg); background: var(--accent);
+    border: 0; border-radius: 10px; padding: 16px 20px; width: 100%; cursor: pointer;
+  }
+  button#run:disabled { opacity: 0.55; cursor: progress; }
+  button#run:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+  #status { font: 500 0.95rem var(--body); min-height: 1.5em; }
+  body[data-state="error"] #status { color: var(--warn); }
+  .results { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 12px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; white-space: normal; }
+  thead th { font: 600 0.72rem var(--body); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.v { font: 600 1.05rem var(--mono); }
+  .note { font-size: 0.85rem; color: var(--muted); }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 0.9rem; }
+  dt { color: var(--muted); }
+  dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+  #cores { font: 600 1.05rem var(--mono); }
+  @media (prefers-reduced-motion: no-preference) { button#run { transition: opacity .15s; } }
+</style>
+
+<main>
+  <h1>Witchball Phone Benchmark</h1>
+  <p class="lede">Plays the same simulated week of the game (season-1, 7 days, every club's games) twice from the same start: once on this page's own thread, then in 3 workers. It keeps nothing on your phone, so your career is untouched. Keep the screen on; it can take a few minutes.</p>
+
+  <button id="run" type="button">Run phone benchmark</button>
+  <p id="status" role="status" aria-live="polite">Ready.</p>
+
+  <div class="results">
+    <table>
+      <thead><tr><th>Run</th><th>Whole week</th><th>Simulation</th><th>Per game</th></tr></thead>
+      <tbody>
+        <tr><td>On the page</td><td class="v" id="main-week">–</td><td class="v" id="main-sim">–</td><td class="v" id="main-game">–</td></tr>
+        <tr><td>3 workers</td><td class="v" id="workers-week">–</td><td class="v" id="workers-sim">–</td><td class="v" id="workers-game">–</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><span id="games"></span> <span id="match"></span> "Per game" is the engine's own time for one game, on the page or inside one worker.</p>
+
+  <dl>
+    <dt>Processors (browser-reported)</dt><dd id="cores">–</dd>
+    <dt>Browser</dt><dd id="agent" class="note">–</dd>
+  </dl>
+</main>
+
+<script type="module" src="assets/bench-BV9zqIeB.js"></script>
+
+</body></html>
