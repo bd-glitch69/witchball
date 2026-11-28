@@ -4,14 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Witchball viewer</title>
-  <script type="module" crossorigin src="./assets/viewer--ArozFVi.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/school_games-z28BNA23.js">
-  <link rel="modulepreload" crossorigin href="./assets/CanvasPool-Cbwekkjc.js">
-  <link rel="modulepreload" crossorigin href="./assets/canvasUtils-B5uSwcsy.js">
-  <link rel="modulepreload" crossorigin href="./assets/RenderTargetSystem-ChTAOV-2.js">
-  <link rel="modulepreload" crossorigin href="./assets/getTextureBatchBindGroup-2lic-O9b.js">
-  <link rel="modulepreload" crossorigin href="./assets/getTexelRangeRects-yRm_-M2y.js">
-  <link rel="stylesheet" crossorigin href="./assets/viewer-CMBEoEMx.css">
+  <script type="module" crossorigin src="./assets/school_games-C1uyRJia.js"></script>
+  <script type="module" crossorigin src="./assets/rolldown-runtime-XKyaHtl9.js"></script>
+  <script type="module" crossorigin src="./assets/CanvasPool-C8TL04p2.js"></script>
+  <script type="module" crossorigin src="./assets/canvasUtils-30AujGy8.js"></script>
+  <script type="module" crossorigin src="./assets/RenderTargetSystem-Dvyqi79B.js"></script>
+  <script type="module" crossorigin src="./assets/getTextureBatchBindGroup-DAd8pHX4.js"></script>
+  <script type="module" crossorigin src="./assets/getTexelRangeRects-j-NjzLRM.js"></script>
+  <script type="module" crossorigin src="./assets/main-DAcPnPt0.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-4kfOk2Pr.css">
 
   <link rel="manifest" href="./manifest.webmanifest" />
   <meta name="theme-color" content="#2c363d" />
@@ -23,17 +24,13 @@
   <script>if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));</script>
 </head>
 <body>
+  <!-- the match screen of a career game: who, where, and which game of the series; the demo's park, seed and Load are on
+       review.html -->
   <header id="bar">
     <a class="to-hub" href="./hub.html" title="Back to your club">← Club</a>
     <div class="brand">Witchball</div>
     <div id="matchup"></div>
-    <div class="tools">
-      <label><span>park</span> <select id="park"></select></label>
-      <form id="load">
-        <input id="seed" size="10" aria-label="seed" />
-        <button type="submit" class="primary">Load</button>
-      </form>
-    </div>
+    <button type="button" id="open-lineups" class="lineups-btn" title="Both clubs' lineups, benches and bullpens (L); the game waits where it is">Lineups</button>
   </header>
   <main>
     <section id="stage">
@@ -58,6 +55,7 @@
         <div id="tip" class="fieldpanel" hidden></div>
         <div id="banner" hidden><div class="big"></div><div class="small"></div></div>
         <div id="casts" hidden aria-live="polite"></div>
+        <div id="zone" hidden></div>
       </div>
       <div id="caption">
         <div id="cap-line"></div>
